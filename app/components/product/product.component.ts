@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 import { Product } from "../../models/product";
 
@@ -10,6 +10,10 @@ export class ProductComponent {
 
     @Input() data: Product;
 
+    // TODO: Se pasan todos los datos del producto. Si no fuera necesario en otros paths
+    // se podría pasar solamente el id.
+    @Output() productoSeleccionado: EventEmitter<Product> = new EventEmitter<Product>();
+
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
     | Green Path                                                       |
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
@@ -20,4 +24,9 @@ export class ProductComponent {
     | de este componente, necesitas, además, un manejador para el      |
     | mismo.                                                           |
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+    notificarProductoSeleccionado(producto: Product): void {
+        //console.log(producto.name);
+        this.productoSeleccionado.emit(producto);
+    }
 }
