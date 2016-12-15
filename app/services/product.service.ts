@@ -70,6 +70,9 @@ export class ProductService {
             if (filter.category != undefined) {
                  this.destinationUrl = this.destinationUrl + `&category.id=${filter.category}`
             }
+            if (filter.state != undefined) {
+                 this.destinationUrl = this.destinationUrl + `&state=${filter.state}`
+            }
         }
         // return this._http
         //     .get(`${this._backendUri}/products?_sort=publishedDate&_order=DESC`)

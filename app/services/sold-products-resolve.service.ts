@@ -1,7 +1,15 @@
 import { Injectable } from "@angular/core";
+import { ActivatedRouteSnapshot, Resolve } from "@angular/router";
+import { Observable } from "rxjs/Observable";
+
+import { ProductService } from "./product.service";
+import { Product } from "../models/product";
+import { ProductFilter } from "../models/product-filter";
 
 @Injectable()
-export class SoldProductsResolve {
+export class SoldProductsResolve implements Resolve<Product[]> {
+
+    private _filtroProductosVendidos: ProductFilter = {};
 
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
     | Yellow Path                                                      |
@@ -19,4 +27,13 @@ export class SoldProductsResolve {
     |    Fíjate en qué se diferencia un producto a la venta de uno     |
     |    ya vendido; quizá te ayude con este punto.                    |
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    constructor(private _productService: ProductService) { }
+
+    resolve(ruta: ActivatedRouteSnapshot): Observable<Product[]> {
+
+        this._filtroProductosVendidos.state="sold";
+        return this._productService.getProducts(this._filtroProductosVendidos);
+        
+    }
+
 }
