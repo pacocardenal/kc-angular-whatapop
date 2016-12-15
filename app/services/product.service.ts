@@ -10,6 +10,8 @@ import { BackendUri } from "../app.settings";
 @Injectable()
 export class ProductService {
 
+    destinationUrl: string;
+
     constructor(
         @Inject(BackendUri) private _backendUri: string,
         private _http: Http) { }
@@ -59,9 +61,25 @@ export class ProductService {
         |       state=x (siendo x el estado)                               |
         |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
+        this.destinationUrl = `${this._backendUri}/products?_sort=publishedDate&_order=DESC`;
+
+        if (filter !== null) {
+            if (filter.text !== undefined) {
+                this.destinationUrl = this.destinationUrl + `&q=${filter.text}`;
+            }
+            if (filter.category != undefined) {
+                 this.destinationUrl = this.destinationUrl + `&category.id=${filter.category}`
+            }
+        }
+        // return this._http
+        //     .get(`${this._backendUri}/products?_sort=publishedDate&_order=DESC`)
+        //     .map((data: Response): Product[] => Product.fromJsonToList(data.json()));
+
+        console.log(this.destinationUrl);
         return this._http
-                   .get(`${this._backendUri}/products?_sort=publishedDate&_order=DESC`)
-                   .map((data: Response): Product[] => Product.fromJsonToList(data.json()));
+            .get(this.destinationUrl)
+            .map((data: Response): Product[] => Product.fromJsonToList(data.json()));
+
     }
 
     getProduct(productId: number): Observable<Product> {
