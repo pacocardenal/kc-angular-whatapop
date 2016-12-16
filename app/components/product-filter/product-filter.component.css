@@ -1,8 +1,21 @@
 :host>div {
+    /*border-top: 1px dashed #2199e8;
+    border-bottom: 1px dashed #2199e8;*/
+    /*margin-top: 18px;*/
+    /*margin-bottom: 48px;*/
+    /*padding-top: 28px;*/
+    /*padding-bottom: 8px;*/
+    text-align: center;
+}
+
+.busqueda {
     border-top: 1px dashed #2199e8;
-    border-bottom: 1px dashed #2199e8;
     margin-top: 18px;
-    margin-bottom: 48px;
     padding-top: 28px;
-    padding-bottom: 8px;
+}
+
+.filtros {
+    border-bottom: 1px dashed #2199e8;
+    margin-bottom: 48px;
+    padding-bottom: 48px;
 }

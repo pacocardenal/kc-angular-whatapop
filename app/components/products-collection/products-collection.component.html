@@ -1,6 +1,6 @@
 <div class="row">
     <div class="small-12 large-12 columns">
-        <product-filter (onSearch)="filterCollection($event)"></product-filter>
+        <product-filter (onSearch)="filterCollection($event)" (onOrder)="orderCollection($event)" (onOrderPrice)="orderCollectionPrice($event)"></product-filter>
     </div>
     <div *ngIf="_products?.length > 0" class="small-up-2 medium-up-4 large-up-6">
 
@@ -12,7 +12,7 @@
         |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
         <product
-            *ngFor="let product of _products"
+            *ngFor="let product of _products | OrdenAlfabetico: sentidoOrdenacion | OrdenPrecio: sentidoOrdenacionPrecio "
             [data]="product"
             (productoSeleccionado)="navegarProductoSeleccionado($event)"
             class="column">

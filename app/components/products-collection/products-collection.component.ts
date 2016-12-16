@@ -15,6 +15,9 @@ export class ProductsCollectionComponent implements OnDestroy, OnInit {
     
     private _products: Product[];
     private _filterStream$: Subject<ProductFilter> = new Subject;
+    private _filtroProductosOrdenados: ProductFilter = {};
+    sentidoOrdenacion: string = "";
+    sentidoOrdenacionPrecio: string = "";
 
     constructor(private _productService: ProductService, private _router: Router) { }
 
@@ -31,6 +34,16 @@ export class ProductsCollectionComponent implements OnDestroy, OnInit {
 
     filterCollection(filter: ProductFilter): void {
         this._filterStream$.next(filter);
+    }
+
+    orderCollection(order: string): void {
+        console.log("Colleción: Ordenar con " + order);
+        this.sentidoOrdenacion = order;
+    }
+
+    orderCollectionPrice(order: string): void {
+        console.log("Colleción: Ordenar con precio " + order);
+        this.sentidoOrdenacionPrecio = order;
     }
 
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|

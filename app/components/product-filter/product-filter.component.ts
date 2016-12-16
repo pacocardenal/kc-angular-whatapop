@@ -13,9 +13,15 @@ import { ProductFilter } from "../../models/product-filter";
 export class ProductFilterComponent implements OnInit, OnDestroy {
 
     @Output() onSearch: EventEmitter<ProductFilter> = new EventEmitter();
+    @Output() onOrder: EventEmitter<string> = new EventEmitter<string>();
+    @Output() onOrderPrice: EventEmitter<string> = new EventEmitter<string>();
     private _productFilter: ProductFilter = {};
     private _categories: Category[];
     private _categoriesSubscription: Subscription;
+    minimumPriceRangeValue: number;
+    maximumPriceRangeValue: number;
+    sentidoOrdenacion: string = "";
+    precioOrdenacion: string = "";
 
     constructor(private _categoryService: CategoryService) { }
 
@@ -32,4 +38,61 @@ export class ProductFilterComponent implements OnInit, OnDestroy {
     notifyHost(): void {
         this.onSearch.emit(this._productFilter);
     }
+
+    minimumPriceRangeValueChanged(value: number): void {
+        console.log(value);
+        this.minimumPriceRangeValue = value;
+    }
+
+    maximumPriceRangeValueChanged(value: number): void {
+        console.log(value);
+        this.maximumPriceRangeValue = value;
+    }
+
+    cambiarOrden(): void {
+        // debugger;
+
+        if (this.sentidoOrdenacion === "") {
+            this.sentidoOrdenacion = "asc";
+            
+        } else if (this.sentidoOrdenacion === "asc") {
+            
+            this.sentidoOrdenacion = "desc";
+  
+        } else if (this.sentidoOrdenacion === "desc") {
+            
+            this.sentidoOrdenacion = "asc";
+
+        }
+
+        this.onOrder.emit(this.sentidoOrdenacion);
+
+        // this.onOrder.emit(this.sentidoOrdenacion);
+        // this.sentidoOrdenacion = this.sentidoOrdenacion === "asc" || "" ? "desc" : "asc";
+        console.log("Sentido ordenación: " + this.sentidoOrdenacion);
+    }
+
+        cambiarOrdenPrecio(): void {
+        // debugger;
+
+        if (this.precioOrdenacion === "") {
+            this.precioOrdenacion = "asc";
+            
+        } else if (this.precioOrdenacion === "asc") {
+            
+            this.precioOrdenacion = "desc";
+  
+        } else if (this.precioOrdenacion === "desc") {
+            
+            this.precioOrdenacion = "asc";
+
+        }
+
+        this.onOrderPrice.emit(this.precioOrdenacion);
+
+        // this.onOrder.emit(this.sentidoOrdenacion);
+        // this.sentidoOrdenacion = this.sentidoOrdenacion === "asc" || "" ? "desc" : "asc";
+        console.log("Precio ordenación: " + this.precioOrdenacion);
+    }
+
 }

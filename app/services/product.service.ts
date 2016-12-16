@@ -16,7 +16,7 @@ export class ProductService {
         @Inject(BackendUri) private _backendUri: string,
         private _http: Http) { }
 
-    getProducts(filter: ProductFilter = undefined): Observable<Product[]> {
+    getProducts(filter: ProductFilter = undefined, order: string = undefined): Observable<Product[]> {
 
         /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
         | Pink Path                                                        |
@@ -60,19 +60,30 @@ export class ProductService {
         |   - Búsqueda por estado:                                         |
         |       state=x (siendo x el estado)                               |
         |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
         this.destinationUrl = `${this._backendUri}/products?_sort=publishedDate&_order=DESC`;
 
-        if (filter !== null) {
+        if (filter !== null && filter !== undefined) {
             if (filter.text !== undefined) {
                 this.destinationUrl = this.destinationUrl + `&q=${filter.text}`;
             }
             if (filter.category != undefined) {
-                 this.destinationUrl = this.destinationUrl + `&category.id=${filter.category}`
+                 this.destinationUrl = this.destinationUrl + `&category.id=${filter.category}`;
             }
             if (filter.state != undefined) {
-                 this.destinationUrl = this.destinationUrl + `&state=${filter.state}`
+                 this.destinationUrl = this.destinationUrl + `&state=${filter.state}`;
             }
+            if (filter.onlySellingProducts === true) {
+                this.destinationUrl = this.destinationUrl + `&state=selling`;
+            }
+            if (filter.minimumPrice != undefined) {
+                this.destinationUrl = this.destinationUrl + `&price_gte=${filter.minimumPrice}`;
+            }
+            if (filter.maximumPrice != undefined) {
+                this.destinationUrl = this.destinationUrl + `&price_lte=${filter.maximumPrice}`;
+            }
+            console.log("Selling: " + filter.onlySellingProducts);
+            console.log("Minimum price: " + filter.minimumPrice);
+            console.log("Maximum price: " + filter.maximumPrice);
         }
         // return this._http
         //     .get(`${this._backendUri}/products?_sort=publishedDate&_order=DESC`)
