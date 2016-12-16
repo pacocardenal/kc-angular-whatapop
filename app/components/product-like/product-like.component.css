@@ -1,0 +1,14 @@
+:host > div {
+    text-align: left;
+}
+
+.icono {
+    border: 0;
+    padding: 0px;
+    font-size: 46px;
+    color: #2199e8;
+}
+
+.contenedor {
+    display: inline-block;
+}

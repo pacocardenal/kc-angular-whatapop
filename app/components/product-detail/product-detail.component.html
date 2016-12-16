@@ -1,6 +1,7 @@
 <div class="row" *ngIf="_product">
     <div class="medium-4 columns">
         <img [src]="getImageSrc()" class="thumbnail" />
+        <product-like [productId]="_product.id"></product-like>
     </div>
     <div class="medium-8 columns">
         <h3>{{ _product.name }}</h3>
