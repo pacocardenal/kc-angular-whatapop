@@ -1,0 +1,8 @@
+<div class="row">
+    <div *ngIf="_products?.length > 0" class="small-up-2 medium-up-4 large-up-6">
+
+        <product *ngFor="let product of _products | OrdenAlfabetico: sentidoOrdenacion | OrdenPrecio: sentidoOrdenacionPrecio " [data]="product"
+            (productoSeleccionado)="navegarProductoSeleccionado($event)" class="column">
+        </product>
+    </div>
+</div>

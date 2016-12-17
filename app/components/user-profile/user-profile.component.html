@@ -9,4 +9,9 @@
             <strong>{{ user?.name }}</strong> | {{ user?.nick }}
         </p>
     </div>
+    <div>
+        <p class="text-center">
+            <a [routerLink] = "['/vendor', userId]">Más artículos de {{ user?.name }} </a>
+        </p>
+    </div>
 </div>

@@ -6,6 +6,7 @@ import { ProductDetailResolve } from "./services/product-detail-resolve.service"
 import { ProductResetComponent } from "./components/product-reset/product-reset.component";
 import { ProductsCollectionComponent } from "./components/products-collection/products-collection.component";
 import { SoldProductsResolve } from "./services/sold-products-resolve.service";
+import { ProductVendorComponent } from "./components/product-vendor/product-vendor.component";
 
 const routes: Routes = [
     {
@@ -25,6 +26,11 @@ const routes: Routes = [
         resolve: {
             products: SoldProductsResolve
         }
+    },
+    {
+        path: "vendor/:vendorId",
+        //path: "vendor",
+        component: ProductVendorComponent
     },
     {
         path: "**",

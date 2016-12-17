@@ -27,8 +27,8 @@ export class ProductFilterComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this._categoriesSubscription = this._categoryService
-                                           .getCategories()
-                                           .subscribe((data: Category[]) => this._categories = data);
+            .getCategories()
+            .subscribe((data: Category[]) => this._categories = data);
     }
 
     ngOnDestroy(): void {
@@ -40,59 +40,39 @@ export class ProductFilterComponent implements OnInit, OnDestroy {
     }
 
     minimumPriceRangeValueChanged(value: number): void {
-        console.log(value);
         this.minimumPriceRangeValue = value;
     }
 
     maximumPriceRangeValueChanged(value: number): void {
-        console.log(value);
         this.maximumPriceRangeValue = value;
     }
 
     cambiarOrden(): void {
-        // debugger;
 
         if (this.sentidoOrdenacion === "") {
             this.sentidoOrdenacion = "asc";
-            
         } else if (this.sentidoOrdenacion === "asc") {
-            
             this.sentidoOrdenacion = "desc";
-  
         } else if (this.sentidoOrdenacion === "desc") {
-            
             this.sentidoOrdenacion = "asc";
-
         }
 
         this.onOrder.emit(this.sentidoOrdenacion);
 
-        // this.onOrder.emit(this.sentidoOrdenacion);
-        // this.sentidoOrdenacion = this.sentidoOrdenacion === "asc" || "" ? "desc" : "asc";
-        console.log("Sentido ordenación: " + this.sentidoOrdenacion);
     }
 
-        cambiarOrdenPrecio(): void {
-        // debugger;
+    cambiarOrdenPrecio(): void {
 
         if (this.precioOrdenacion === "") {
             this.precioOrdenacion = "asc";
-            
         } else if (this.precioOrdenacion === "asc") {
-            
             this.precioOrdenacion = "desc";
-  
         } else if (this.precioOrdenacion === "desc") {
-            
             this.precioOrdenacion = "asc";
-
         }
 
         this.onOrderPrice.emit(this.precioOrdenacion);
 
-        // this.onOrder.emit(this.sentidoOrdenacion);
-        // this.sentidoOrdenacion = this.sentidoOrdenacion === "asc" || "" ? "desc" : "asc";
-        console.log("Precio ordenación: " + this.precioOrdenacion);
     }
 
 }

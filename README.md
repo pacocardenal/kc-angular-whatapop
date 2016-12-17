@@ -1,3 +1,13 @@
+# angular2-whatapop-optional-paths-indications
+
+## Broken White Path
+
+El like aparece en icono de corazón debajo de la carátula del artículo en la vista de detalle para activar/desactivar.
+
+## Brick Red Path
+
+El enlace a los productos de vendedor aparece en el componente user-profile insertado en la vista de detalle del producto.
+
 # angular2-test-directions
 
 **Whatapop** es un _amago_ de clon de [Wallapop](http://es.wallapop.com). Sus pretensiones son mucho más humildes que las del conocido portal, pero a la vez contribuyen a una grandiosa causa: que aprendas a familiarizarte con HTML5, CSS3 y Angular.

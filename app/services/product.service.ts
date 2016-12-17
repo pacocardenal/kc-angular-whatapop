@@ -81,15 +81,11 @@ export class ProductService {
             if (filter.maximumPrice != undefined) {
                 this.destinationUrl = this.destinationUrl + `&price_lte=${filter.maximumPrice}`;
             }
-            console.log("Selling: " + filter.onlySellingProducts);
-            console.log("Minimum price: " + filter.minimumPrice);
-            console.log("Maximum price: " + filter.maximumPrice);
+            if (filter.sellerId != undefined) {
+                this.destinationUrl = this.destinationUrl + `&seller.id=${filter.sellerId}`;
+            }
         }
-        // return this._http
-        //     .get(`${this._backendUri}/products?_sort=publishedDate&_order=DESC`)
-        //     .map((data: Response): Product[] => Product.fromJsonToList(data.json()));
 
-        console.log(this.destinationUrl);
         return this._http
             .get(this.destinationUrl)
             .map((data: Response): Product[] => Product.fromJsonToList(data.json()));

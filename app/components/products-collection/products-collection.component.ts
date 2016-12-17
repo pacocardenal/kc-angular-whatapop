@@ -37,12 +37,10 @@ export class ProductsCollectionComponent implements OnDestroy, OnInit {
     }
 
     orderCollection(order: string): void {
-        console.log("Colleción: Ordenar con " + order);
         this.sentidoOrdenacion = order;
     }
 
     orderCollectionPrice(order: string): void {
-        console.log("Colleción: Ordenar con precio " + order);
         this.sentidoOrdenacionPrecio = order;
     }
 
@@ -56,7 +54,6 @@ export class ProductsCollectionComponent implements OnDestroy, OnInit {
     | como parámetro el identificador del producto.                    |
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     navegarProductoSeleccionado(producto: Product): void {
-        //console.log(`Navegado con ${producto.name}`);
         this._router.navigate([`/products/${producto.id}`]);
     }
 

@@ -26,7 +26,6 @@ export class ProductComponent {
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
     notificarProductoSeleccionado(producto: Product): void {
-        //console.log(producto.name);
         this.productoSeleccionado.emit(producto);
     }
 }

@@ -5,4 +5,5 @@ export interface ProductFilter {
     onlySellingProducts?: boolean;
     minimumPrice?: number;
     maximumPrice?: number;
+    sellerId?: number;
 }

@@ -23,6 +23,7 @@ import { UserService } from "./services/user.service";
 import { ProductLikeComponent } from "./components/product-like/product-like.component";
 import { OrderProductsPipe } from "./pipes/order-products.pipe";
 import { OrderPricePipe } from "./pipes/order-price.pipe";
+import { ProductVendorComponent } from "./components/product-vendor/product-vendor.component";
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 | Blue Path                                                        |
@@ -50,7 +51,8 @@ import {PublicationDatePipe} from "./pipes/publication-date.pipe";
         PublicationDatePipe,
         ProductLikeComponent,
         OrderProductsPipe,
-        OrderPricePipe
+        OrderPricePipe,
+        ProductVendorComponent
     ],
     providers: [
         BackendUriProvider,
